@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-02-25 01:19:16 57716F                             [zr_whirl/hash.go]
+// :v: 2018-02-26 23:25:22 F1EDA8                             [zr_whirl/hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -23,8 +23,8 @@ package whirl
 //   processBuffer(ob *Hash)
 //
 // -----------------------------------------------------------------------------
-// This Go language implementation was made by Active Systems based on
-// original public domain C source code. See details below.
+// This Go language implementation was made by balarabe@protonmail.com
+// based on original public domain C source code. See details below.
 //
 // Summary of changes from the reference C implementation:
 // - Added a Go-friendly interface: e.g. Sum512(), New(), Write()
@@ -89,7 +89,7 @@ https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/whirlpool.zip
 
 import "fmt" // standard
 
-import "github.com/balacode/zr" // Zirconium
+import "github.com/balacode/zr" // Zircon-Go
 
 // -----------------------------------------------------------------------------
 // # Public Functions
