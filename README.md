@@ -1,2 +1,2 @@
 # zr_whirl
-Zirconium Go Library - Whirlpool Hash (translated from original C impl.)
+Zircon-Go Library - Whirlpool Hash (translated from original C impl.)
