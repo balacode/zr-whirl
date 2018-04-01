@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-02-26 23:07:33 2202B7                           [zr_whirl/module.go]
+// :v: 2018-04-01 12:09:54 2B12AC                           [zr-whirl/module.go]
 // -----------------------------------------------------------------------------
 
 // Package whirl implements the Whirlpool hashing algorithm.
