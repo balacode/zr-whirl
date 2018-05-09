@@ -1,16 +1,18 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-04-01 12:09:54 E62AFB                        [zr-whirl/hash_test.go]
+// :v: 2018-05-09 01:03:18 E99A21                        [zr-whirl/hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
 
-import "bytes"       // standard
-import "fmt"         // standard
-import "testing"     // standard
-import str "strings" // standard
+import (
+	"bytes"
+	"fmt"
+	str "strings"
+	"testing"
 
-import "github.com/balacode/zr" // Zircon-Go
+	"github.com/balacode/zr" // Zircon-Go
+)
 
 /*
 to test all items in hash.go use:
