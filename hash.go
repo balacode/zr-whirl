@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-05-09 01:03:18 57153A                             [zr-whirl/hash.go]
+// :v: 2018-05-24 04:12:11 981CAD                             [zr-whirl/hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -90,7 +90,7 @@ https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/whirlpool.zip
 import (
 	"fmt"
 
-	"github.com/balacode/zr" // Zircon-Go
+	"github.com/balacode/zr"
 )
 
 // -----------------------------------------------------------------------------

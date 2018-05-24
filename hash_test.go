@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-05-09 01:03:18 E99A21                        [zr-whirl/hash_test.go]
+// :v: 2018-05-24 04:12:11 84333B                        [zr-whirl/hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -11,7 +11,7 @@ import (
 	str "strings"
 	"testing"
 
-	"github.com/balacode/zr" // Zircon-Go
+	"github.com/balacode/zr"
 )
 
 /*
