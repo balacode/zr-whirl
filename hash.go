@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-05-24 04:12:11 B44BED                             zr-whirl/[hash.go]
+// :v: 2019-04-02 18:21:02 9D200C                             zr-whirl/[hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -102,7 +102,7 @@ func HashOfBytes(ar []byte, salt []byte) []byte {
 	var input []byte
 	input = append(input, salt[:]...)
 	input = append(input, ar...)
-	var hash = Sum512(input)
+	hash := Sum512(input)
 	return hash[:]
 } //                                                                 HashOfBytes
 
@@ -112,13 +112,13 @@ func HashOfString(s string, salt []byte) []byte {
 	var input []byte
 	input = append(input, salt[:]...)
 	input = append(input, []byte(s)...)
-	var hash = Sum512(input)
+	hash := Sum512(input)
 	return hash[:]
 } //                                                                HashOfString
 
 // Sum512 __
 func Sum512(data []byte) [cDigestBytes]byte {
-	var hash = New()
+	hash := New()
 	appendBytes(data, uint64(8*len(data)), &hash)
 	var digest [cDigestBytes]byte
 	finalize(&hash, digest[:])
@@ -198,20 +198,20 @@ func appendBytes(source []byte, sourceBits uint64, ob *Hash) {
 	//                 |
 	//                 bufferPos
 	// index of leftmost source byte containing data (1 to 8 bits).
-	var sourcePos = 0
+	sourcePos := 0
 	// space on source[sourcePos].
-	var sourceGap = (8 - int(sourceBits)&7) & 7
+	sourceGap := (8 - int(sourceBits)&7) & 7
 	// occupied bits on buffer[bufferPos].
-	var bufferRem = ob.bufferBits & 7
+	bufferRem := ob.bufferBits & 7
 	var b uint32
-	var buffer = ob.buffer[:]
-	var bitLength = &ob.bitLength
-	var bufferBits = ob.bufferBits
-	var bufferPos = ob.bufferPos
+	buffer := ob.buffer[:]
+	bitLength := &ob.bitLength
+	bufferBits := ob.bufferBits
+	bufferPos := ob.bufferPos
 	// tally the length of the added data:
 	{
-		var carry = uint32(0)
-		var val = uint64(sourceBits)
+		carry := uint32(0)
+		val := uint64(sourceBits)
 		for i := 31; i >= 0 && (carry != 0 || val != 0); i-- {
 			carry += uint32(bitLength[i]) + (uint32(val) & 0xff)
 			bitLength[i] = byte(carry)
@@ -285,10 +285,12 @@ func finalize(ob *Hash, result []byte) {
 		zr.Error(zr.ENilReceiver)
 		return
 	}
-	var buffer = ob.buffer[:]
-	var bufferBits = ob.bufferBits
-	var bufferPos = ob.bufferPos
-	var digest = result
+	var (
+		buffer     = ob.buffer[:]
+		bufferBits = ob.bufferBits
+		bufferPos  = ob.bufferPos
+		digest     = result
+	)
 	// append a '1'-bit:
 	buffer[bufferPos] |= 0x80 >> uint32(bufferBits&7)
 	bufferPos++ // all remaining bits on the current byte are set to zero.
@@ -309,7 +311,7 @@ func finalize(ob *Hash, result []byte) {
 	}
 	bufferPos = cWBlockBytes - cLengthBytes
 	// append bit length of hashed data
-	var bitLength = ob.bitLength[:]
+	bitLength := ob.bitLength[:]
 	copy(buffer[cWBlockBytes-cLengthBytes:], bitLength[:cLengthBytes])
 	//
 	// process data block
@@ -341,7 +343,7 @@ func processBuffer(ob *Hash) {
 	var block [8]uint64 // mu(buffer)
 	var state [8]uint64 // the cipher state
 	var L [8]uint64
-	var buffer = ob.buffer[:]
+	buffer := ob.buffer[:]
 	if cTraceIntermediateValues {
 		fmt.Printf("The 8x8 matrix Z' derived from the" +
 			" data-string is as follows." + LB)

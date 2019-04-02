@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-05-24 04:12:11 8513B4                        zr-whirl/[hash_test.go]
+// :v: 2019-04-02 18:21:02 E7284E                        zr-whirl/[hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -25,7 +25,7 @@ to generate a test coverage report for the whole module use:
 
 // go test --run Test_hash_ISO_
 func Test_hash_ISO_(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		note   string
 		input  string
 		expect string
@@ -120,14 +120,14 @@ func Test_hash_ISO_(t *testing.T) {
 		},
 	}
 	for i, test := range tests {
-		var digest = Sum512([]byte(test.input))
+		digest := Sum512([]byte(test.input))
 		if false {
 			fmt.Printf(test.note + LF + LF +
 				"The hash-code is the following 512-bit string." + LF + LF)
 			display(digest[:], cDigestBytes)
 		}
-		var got = str.Trim(format(digest[:]), " \a\b\f\n\r\t\v")
-		var expect = str.Trim(test.expect, " \a\b\f\n\r\t\v")
+		got := str.Trim(format(digest[:]), " \a\b\f\n\r\t\v")
+		expect := str.Trim(test.expect, " \a\b\f\n\r\t\v")
 		if got != expect {
 			fmt.Printf("TEST %d FAILED!"+LF, i+1)
 			fmt.Println("EXPECTED:")
@@ -153,7 +153,7 @@ func makeNESSIETestVectors() {
 	var data [128]byte
 	fmt.Println("Message digests of strings of 0-bits and length L:")
 	for i := 0; i < 1024; i++ {
-		var w = New()
+		w := New()
 		appendBytes(data[:], uint64(i), &w)
 		finalize(&w, digest[:])
 		fmt.Printf("    L = %4d: ", i)
@@ -166,7 +166,7 @@ func makeNESSIETestVectors() {
 	for i := 0; i < 512; i++ {
 		// set bit i:
 		data[i/8] |= 0x80 >> uint32(i%8)
-		var w = New()
+		w := New()
 		appendBytes(data[:], 512, &w)
 		finalize(&w, digest[:])
 		fmt.Printf("    S = ")
@@ -180,7 +180,7 @@ func makeNESSIETestVectors() {
 	const LONGITERATION = 100000000
 	digest = [cDigestBytes]byte{}
 	for i := 0; i < LONGITERATION; i++ {
-		var w = New()
+		w := New()
 		appendBytes(digest[:], 512, &w)
 		finalize(&w, digest[:])
 	}
@@ -203,12 +203,12 @@ func testAPI(t *testing.T) {
 			//todo: flush stderr
 		}
 		// do the hashing in pieces of variable length:
-		var w = New()
+		w := New()
 		appendBytes(dataBuf[:], uint64(8*dataLen), &w)
 		finalize(&w, expectedDigest[:])
 		if dataLen > 0 {
 			for pieceLen = 1; pieceLen <= dataLen; pieceLen++ {
-				var w = New()
+				w := New()
 				for totalLen = 0; totalLen+pieceLen <=
 					dataLen; totalLen += pieceLen {
 					appendBytes(dataBuf[totalLen:], uint64(8*pieceLen), &w)
@@ -229,7 +229,7 @@ func testAPI(t *testing.T) {
 				}
 			}
 		} else {
-			var w = New()
+			w := New()
 			finalize(&w, computedDigest[:])
 			if bytes.Compare(computedDigest[:], expectedDigest[:]) != 0 {
 				fmt.Println("API error @ pieceLen = 0")
@@ -249,9 +249,9 @@ func timing() {
 	//todo: clock_t elapsed
 	var sec float32
 	fmt.Printf("Overall timing...")
-	var elapsed = 0 //todo: -clock()
+	elapsed := 0 //todo: -clock()
 	for i := 0; i < TIMINGITERATIONS; i++ {
-		var w = New()
+		w := New()
 		appendBytes(data[:], uint64(8*len(data)), &w)
 		finalize(&w, digest[:])
 	}
@@ -262,7 +262,7 @@ func timing() {
 		float32(8)*float32(len(data))*TIMINGITERATIONS/sec/1000000,
 		float32(550e6)*sec/(float32(len(data))*TIMINGITERATIONS))
 	fmt.Printf("Compression function timing...")
-	var w = New()
+	w := New()
 	elapsed = 0 //todo: -clock()
 	for i := 0; i < TIMINGITERATIONS; i++ {
 		processBuffer(&w)
@@ -284,7 +284,7 @@ func makeIntermediateValues() {
 	var digest [cDigestBytes]byte
 	fmt.Printf("3. In this example the data-string is the three-byte" +
 		" string consisting of the ASCII-coded version of 'abc'." + LF + LF)
-	var w = New()
+	w := New()
 	appendBytes([]byte("abc"), 8*3, &w)
 	finalize(&w, digest[:])
 	fmt.Printf("The hash-code is the following 512-bit string." + LF)
@@ -335,7 +335,7 @@ func (ob *Hash) printStruct(title string) {
 		return
 	}
 	fmt.Printf("Hash: %s"+LF, title)
-	var buf = ob.buffer[:]
+	buf := ob.buffer[:]
 	for i, b := 0, 0; i < cWBlockBytes/8; i++ {
 		fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X"+LF,
 			buf[b+0], buf[b+1], buf[b+2], buf[b+3],
