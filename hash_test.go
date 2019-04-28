@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-04-02 18:21:02 E7284E                        zr-whirl/[hash_test.go]
+// :v: 2019-04-28 17:57:57 8BF4B4                        zr-whirl/[hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -8,7 +8,7 @@ package whirl
 import (
 	"bytes"
 	"fmt"
-	str "strings"
+	"strings"
 	"testing"
 
 	"github.com/balacode/zr"
@@ -92,7 +92,7 @@ func Test_hash_ISO_(t *testing.T) {
 			note: "7. In this example the data-string is the 80-byte string" +
 				" consisting of the ASCII-coded version of eight" +
 				" repetitions of '1234567890'.",
-			input: str.Repeat("1234567890", 8),
+			input: strings.Repeat("1234567890", 8),
 			expect: "466EF18BABB0154D 25B9D38A6414F5C0" +
 				" 8784372BCCB204D6 549C4AFADB601429" + LF +
 				" 4D5BD8DF2A6C44E5 38CD047B2681A51A" +
@@ -112,7 +112,7 @@ func Test_hash_ISO_(t *testing.T) {
 			note: "9. In this example the data-string is the 1000000-byte" +
 				" string consisting of the ASCII-coded version of 'a'" +
 				" repeated 10^6 times.",
-			input: str.Repeat("a", 1000000),
+			input: strings.Repeat("a", 1000000),
 			expect: "0C99005BEB57EFF5 0A7CF005560DDF5D" +
 				" 29057FD86B20BFD6 2DECA0F1CCEA4AF5" + LF +
 				" 1FC15490EDDC47AF 32BB2B66C34FF9AD" +
@@ -126,8 +126,8 @@ func Test_hash_ISO_(t *testing.T) {
 				"The hash-code is the following 512-bit string." + LF + LF)
 			display(digest[:], cDigestBytes)
 		}
-		got := str.Trim(format(digest[:]), " \a\b\f\n\r\t\v")
-		expect := str.Trim(test.expect, " \a\b\f\n\r\t\v")
+		got := strings.Trim(format(digest[:]), " \a\b\f\n\r\t\v")
+		expect := strings.Trim(test.expect, " \a\b\f\n\r\t\v")
 		if got != expect {
 			fmt.Printf("TEST %d FAILED!"+LF, i+1)
 			fmt.Println("EXPECTED:")
