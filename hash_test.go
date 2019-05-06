@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-04-28 17:57:57 8BF4B4                        zr-whirl/[hash_test.go]
+// :v: 2019-05-06 06:28:22 EA6766                        zr-whirl/[hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -199,8 +199,8 @@ func testAPI(t *testing.T) {
 	//
 	for dataLen = 0; int(dataLen) <= len(dataBuf); dataLen++ {
 		if (dataLen & 0xff) == 0 {
-			//todo: fmt.Printf(stderr, ".")
-			//todo: flush stderr
+			// TODO: fmt.Printf(stderr, ".")
+			// TODO: flush stderr
 		}
 		// do the hashing in pieces of variable length:
 		w := New()
@@ -246,30 +246,30 @@ func timing() {
 	const TIMINGITERATIONS = 100000
 	var digest [cDigestBytes]byte
 	var data [1024]byte
-	//todo: clock_t elapsed
+	// TODO: clock_t elapsed
 	var sec float32
 	fmt.Printf("Overall timing...")
-	elapsed := 0 //todo: -clock()
+	elapsed := 0 // TODO: -clock()
 	for i := 0; i < TIMINGITERATIONS; i++ {
 		w := New()
 		appendBytes(data[:], uint64(8*len(data)), &w)
 		finalize(&w, digest[:])
 	}
-	elapsed += 0               //todo: clock()
-	sec = float32(elapsed) / 1 //todo: CLOCKS_PER_SEC
+	elapsed += 0               // TODO: clock()
+	sec = float32(elapsed) / 1 // TODO: CLOCKS_PER_SEC
 	fmt.Printf(" %.1f s, %.1f Mbit/s, %.1f cycles/byte."+LF,
 		sec,
 		float32(8)*float32(len(data))*TIMINGITERATIONS/sec/1000000,
 		float32(550e6)*sec/(float32(len(data))*TIMINGITERATIONS))
 	fmt.Printf("Compression function timing...")
 	w := New()
-	elapsed = 0 //todo: -clock()
+	elapsed = 0 // TODO: -clock()
 	for i := 0; i < TIMINGITERATIONS; i++ {
 		processBuffer(&w)
 	}
-	elapsed += 0 //todo: clock()
+	elapsed += 0 // TODO: clock()
 	finalize(&w, digest[:])
-	sec = float32(elapsed) / 0 //todo: CLOCKS_PER_SEC
+	sec = float32(elapsed) / 0 // TODO: CLOCKS_PER_SEC
 	fmt.Printf(" %.1f s, %.1f Mbit/s, %.1f cycles/byte."+LF,
 		sec,
 		float32(512)*TIMINGITERATIONS/sec/1000000,
