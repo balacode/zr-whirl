@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-04-02 18:21:02 9D200C                             zr-whirl/[hash.go]
+// :v: 2019-05-09 17:21:06 9621A0                             zr-whirl/[hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -151,9 +151,9 @@ func New() Hash {
 	var ret Hash
 	// it's only necessary to cleanup buffer[bufferPos]
 	if cTraceIntermediateValues {
-		fmt.Printf("Initial hash value:" + LB)
+		fmt.Printf("Initial hash value:\r\n")
 		for i := 0; i < cDigestBytes/8; i++ {
-			fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X"+LB,
+			fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X\r\n",
 				byte(ret.hash[i]>>56),
 				byte(ret.hash[i]>>48),
 				byte(ret.hash[i]>>40),
@@ -163,7 +163,7 @@ func New() Hash {
 				byte(ret.hash[i]>>8),
 				byte(ret.hash[i]))
 		}
-		fmt.Printf(LB)
+		fmt.Printf("\r\n")
 	}
 	return ret
 } //                                                                         New
@@ -346,14 +346,14 @@ func processBuffer(ob *Hash) {
 	buffer := ob.buffer[:]
 	if cTraceIntermediateValues {
 		fmt.Printf("The 8x8 matrix Z' derived from the" +
-			" data-string is as follows." + LB)
+			" data-string is as follows.\r\n")
 		for i, b := 0, 0; i < cWBlockBytes/8; i++ {
-			fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X"+LB,
+			fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X\r\n",
 				buffer[b+0], buffer[b+1], buffer[b+2], buffer[b+3],
 				buffer[b+4], buffer[b+5], buffer[b+6], buffer[b+7])
 			b += 8
 		}
-		fmt.Printf(LB)
+		fmt.Printf("\r\n")
 		buffer = ob.buffer[:]
 	}
 	// map the buffer to a block:
@@ -375,11 +375,11 @@ func processBuffer(ob *Hash) {
 	}
 	if cTraceIntermediateValues {
 		fmt.Printf("The K_0 matrix (from the initialization value IV)" +
-			" and X'' matrix are as follows." + LB)
+			" and X'' matrix are as follows.\r\n")
 		for i := 0; i < cDigestBytes/8; i++ {
 			fmt.Printf(
 				"    %02X %02X %02X %02X %02X %02X %02X %02X    "+
-					"    %02X %02X %02X %02X %02X %02X %02X %02X"+LB,
+					"    %02X %02X %02X %02X %02X %02X %02X %02X\r\n",
 				byte(K[i]>>56),
 				byte(K[i]>>48),
 				byte(K[i]>>40),
@@ -398,10 +398,10 @@ func processBuffer(ob *Hash) {
 				byte(state[i]),
 			)
 		}
-		fmt.Printf(LB +
+		fmt.Printf("\r\n" +
 			"The following are (hexadecimal representations of) the" +
 			" successive values of the variables" +
-			" K_i for i = 1 to 10 and W'." + LB + LB)
+			" K_i for i = 1 to 10 and W'.\r\n\r\n")
 	}
 	// iterate over all rounds:
 	for r := 1; r <= cRounds; r++ {
@@ -561,11 +561,11 @@ func processBuffer(ob *Hash) {
 		state[6] = L[6]
 		state[7] = L[7]
 		if cTraceIntermediateValues {
-			fmt.Printf("i = %d:"+LB, r)
+			fmt.Printf("i = %d:\r\n", r)
 			for i := 0; i < cDigestBytes/8; i++ {
 				fmt.Printf(
 					"    %02X %02X %02X %02X %02X %02X %02X %02X        "+
-						"%02X %02X %02X %02X %02X %02X %02X %02X"+LB,
+						"%02X %02X %02X %02X %02X %02X %02X %02X\r\n",
 					byte(K[i]>>56),
 					byte(K[i]>>48),
 					byte(K[i]>>40),
@@ -584,7 +584,7 @@ func processBuffer(ob *Hash) {
 					byte(state[i]),
 				)
 			}
-			fmt.Printf(LB)
+			fmt.Printf("\r\n")
 		}
 	}
 	// apply the Miyaguchi-Preneel compression function:
@@ -598,9 +598,9 @@ func processBuffer(ob *Hash) {
 	ob.hash[7] ^= state[7] ^ block[7]
 	if cTraceIntermediateValues {
 		fmt.Printf("The value of Y' output from the" +
-			" round-function is as follows." + LB)
+			" round-function is as follows.\r\n")
 		for i := 0; i < cDigestBytes/8; i++ {
-			fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X"+LB,
+			fmt.Printf("    %02X %02X %02X %02X %02X %02X %02X %02X\r\n",
 				byte(ob.hash[i]>>56),
 				byte(ob.hash[i]>>48),
 				byte(ob.hash[i]>>40),
@@ -610,7 +610,7 @@ func processBuffer(ob *Hash) {
 				byte(ob.hash[i]>>8),
 				byte(ob.hash[i]))
 		}
-		fmt.Printf(LB)
+		fmt.Printf("\r\n")
 	}
 } //                                                               processBuffer
 

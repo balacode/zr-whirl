@@ -1,15 +1,9 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-04-01 12:09:54 981BF9                        zr-whirl/[constants.go]
+// :v: 2019-05-09 17:21:06 74F196                        zr-whirl/[constants.go]
 // -----------------------------------------------------------------------------
 
 package whirl
-
-// LB specifies a line break string.
-// On Windows it is a pair of CR and LF.
-// CR is decimal 13, hex 0D.
-// LF is decimal 10, hex 0A.
-const LB = "\r\n"
 
 // LF is the line feed character (decimal 10 / hex 0x0A)
 const LF = "\n"
