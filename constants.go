@@ -1,12 +1,9 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-09 17:21:06 74F196                        zr-whirl/[constants.go]
+// :v: 2019-05-09 18:15:00 373067                        zr-whirl/[constants.go]
 // -----------------------------------------------------------------------------
 
 package whirl
-
-// LF is the line feed character (decimal 10 / hex 0x0A)
-const LF = "\n"
 
 const cDigestBytes = 64
 const cDigestBits = 8 * cDigestBytes // 512
