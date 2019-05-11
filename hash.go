@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-09 17:21:06 9621A0                             zr-whirl/[hash.go]
+// :v: 2019-05-11 04:38:16 BBC65A                             zr-whirl/[hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -187,27 +187,31 @@ func (ob *Hash) Write(data []byte) (n int, err error) {
 //
 // This method maintains the invariant: bufferBits < cDigestBits
 func appendBytes(source []byte, sourceBits uint64, ob *Hash) {
-	//                    sourcePos
-	//                    |
-	//                    +-------+-------+-------
-	//                       ||||||||||||||||||||| source
-	//                    +-------+-------+-------
-	// +-------+-------+-------+-------+-------+-------
-	// ||||||||||||||||||||||                           buffer
-	// +-------+-------+-------+-------+-------+-------
-	//                 |
-	//                 bufferPos
-	// index of leftmost source byte containing data (1 to 8 bits).
-	sourcePos := 0
-	// space on source[sourcePos].
-	sourceGap := (8 - int(sourceBits)&7) & 7
-	// occupied bits on buffer[bufferPos].
-	bufferRem := ob.bufferBits & 7
-	var b uint32
-	buffer := ob.buffer[:]
-	bitLength := &ob.bitLength
-	bufferBits := ob.bufferBits
-	bufferPos := ob.bufferPos
+	var (
+		//                    sourcePos
+		//                    |
+		//                    +-------+-------+-------
+		//                       ||||||||||||||||||||| source
+		//                    +-------+-------+-------
+		// +-------+-------+-------+-------+-------+-------
+		// ||||||||||||||||||||||                           buffer
+		// +-------+-------+-------+-------+-------+-------
+		//                 |
+		//                 bufferPos
+		// index of leftmost source byte containing data (1 to 8 bits).
+		sourcePos = 0
+		//
+		// space on source[sourcePos].
+		sourceGap = (8 - int(sourceBits)&7) & 7
+		//
+		// occupied bits on buffer[bufferPos].
+		bufferRem  = ob.bufferBits & 7
+		buffer     = ob.buffer[:]
+		bitLength  = &ob.bitLength
+		bufferBits = ob.bufferBits
+		bufferPos  = ob.bufferPos
+		b          uint32
+	)
 	// tally the length of the added data:
 	{
 		carry := uint32(0)
@@ -339,11 +343,13 @@ func processBuffer(ob *Hash) {
 		zr.Error(zr.ENilReceiver)
 		return
 	}
-	var K [8]uint64     // the round key
-	var block [8]uint64 // mu(buffer)
-	var state [8]uint64 // the cipher state
-	var L [8]uint64
-	buffer := ob.buffer[:]
+	var (
+		K      [8]uint64 // the round key
+		block  [8]uint64 // mu(buffer)
+		state  [8]uint64 // the cipher state
+		L      [8]uint64
+		buffer = ob.buffer[:]
+	)
 	if cTraceIntermediateValues {
 		fmt.Printf("The 8x8 matrix Z' derived from the" +
 			" data-string is as follows.\r\n")

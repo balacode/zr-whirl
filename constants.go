@@ -1,17 +1,19 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-09 18:15:00 373067                        zr-whirl/[constants.go]
+// :v: 2019-05-11 04:38:16 285D05                        zr-whirl/[constants.go]
 // -----------------------------------------------------------------------------
 
 package whirl
 
-const cDigestBytes = 64
-const cDigestBits = 8 * cDigestBytes // 512
-const cWBlockBytes = 64
-const cWBlockBits = 8 * cWBlockBytes // 512
-const cLengthBytes = 32
-const cLengthBits = 8 * cLengthBytes // 256
-const cTraceIntermediateValues = false
+const (
+	cDigestBytes             = 64
+	cDigestBits              = 8 * cDigestBytes // 512
+	cWBlockBytes             = 64
+	cWBlockBits              = 8 * cWBlockBytes // 512
+	cLengthBytes             = 32
+	cLengthBits              = 8 * cLengthBytes // 256
+	cTraceIntermediateValues = false
+)
 
 // The number of rounds of the internal dedicated block cipher.
 const cRounds = 10

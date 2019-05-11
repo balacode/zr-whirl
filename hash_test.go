@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-09 18:15:00 5B7BC5                        zr-whirl/[hash_test.go]
+// :v: 2019-05-11 04:38:16 9B27AD                        zr-whirl/[hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -192,11 +192,12 @@ func makeNESSIETestVectors() {
 
 // testAPI __
 func testAPI(t *testing.T) {
-	var pieceLen, totalLen, dataLen uint32
-	var dataBuf [512]byte
-	var expectedDigest [cDigestBytes]byte
-	var computedDigest [cDigestBytes]byte
-	//
+	var (
+		pieceLen, totalLen, dataLen uint32
+		dataBuf                     [512]byte
+		expectedDigest              [cDigestBytes]byte
+		computedDigest              [cDigestBytes]byte
+	)
 	for dataLen = 0; int(dataLen) <= len(dataBuf); dataLen++ {
 		if (dataLen & 0xff) == 0 {
 			// TODO: fmt.Printf(stderr, ".")
