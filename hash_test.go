@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-11 04:38:16 9B27AD                        zr-whirl/[hash_test.go]
+// :v: 2019-05-12 17:08:39 CACFD4                        zr-whirl/[hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -14,14 +14,12 @@ import (
 	"github.com/balacode/zr"
 )
 
-/*
-to test all items in hash.go use:
-    go test --run Test_hash_
-
-to generate a test coverage report for the whole module use:
-    go test -coverprofile cover.out
-    go tool cover -html=cover.out
-*/
+//  to test all items in hash.go use:
+//      go test --run Test_hash_
+//
+//  to generate a test coverage report for the whole module use:
+//      go test -coverprofile cover.out
+//      go tool cover -html=cover.out
 
 // go test --run Test_hash_ISO_
 func Test_hash_ISO_(t *testing.T) {
