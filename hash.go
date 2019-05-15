@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-11 04:38:16 BBC65A                             zr-whirl/[hash.go]
+// :v: 2019-05-15 01:38:06 6785EE                             zr-whirl/[hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -98,11 +98,11 @@ import (
 
 // HashOfBytes returns the Whirlpool hash of a byte slice.
 // It also requires a 'salt' argument.
-func HashOfBytes(ar []byte, salt []byte) []byte {
-	var input []byte
-	input = append(input, salt[:]...)
-	input = append(input, ar...)
-	hash := Sum512(input)
+func HashOfBytes(data []byte, salt []byte) []byte {
+	ar := make([]byte, 0, len(salt)+len(data))
+	ar = append(ar, salt[:]...)
+	ar = append(ar, data...)
+	hash := Sum512(ar)
 	return hash[:]
 } //                                                                 HashOfBytes
 
