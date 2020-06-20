@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-12 17:08:39 CACFD4                        zr-whirl/[hash_test.go]
+// :v: 2020-06-20 10:10:43 A6E7CA                        zr-whirl/[hash_test.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -188,7 +188,7 @@ func makeNESSIETestVectors() {
 	fmt.Println()
 } //                                                       makeNESSIETestVectors
 
-// testAPI __
+// testAPI _ _
 func testAPI(t *testing.T) {
 	var (
 		pieceLen, totalLen, dataLen uint32
@@ -240,7 +240,7 @@ func testAPI(t *testing.T) {
 	fmt.Println("No error detected.")
 } //                                                                     testAPI
 
-//  timing __
+//  timing _ _
 func timing() {
 	const TIMINGITERATIONS = 100000
 	var digest [cDigestBytes]byte
@@ -275,7 +275,7 @@ func timing() {
 		float32(550e6)*sec/(64*TIMINGITERATIONS))
 } //                                                                      timing
 
-// makeIntermediateValues __
+// makeIntermediateValues _ _
 func makeIntermediateValues() {
 	if !cTraceIntermediateValues {
 		return
@@ -300,7 +300,7 @@ func makeIntermediateValues() {
 	fmt.Printf("\n\n")
 } //                                                      makeIntermediateValues
 
-// display __
+// display _ _
 func display(ar []byte, length int) {
 	for i := 0; i < length; i++ {
 		if i%32 == 0 {
@@ -313,7 +313,7 @@ func display(ar []byte, length int) {
 	}
 } //                                                                     display
 
-// format __
+// format _ _
 func format(ar []byte) (ret string) {
 	for i := 0; i < len(ar); i++ {
 		if i%32 == 0 {
@@ -327,7 +327,7 @@ func format(ar []byte) (ret string) {
 	return ret
 } //                                                                      format
 
-// printStruct __
+// printStruct _ _
 func (ob *Hash) printStruct(title string) {
 	if ob == nil {
 		zr.Error(zr.ENilReceiver)

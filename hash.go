@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-15 01:38:06 6785EE                             zr-whirl/[hash.go]
+// :v: 2020-06-20 10:10:43 4BD42F                             zr-whirl/[hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl
@@ -116,7 +116,7 @@ func HashOfString(s string, salt []byte) []byte {
 	return hash[:]
 } //                                                                HashOfString
 
-// Sum512 __
+// Sum512 _ _
 func Sum512(data []byte) [cDigestBytes]byte {
 	hash := New()
 	appendBytes(data, uint64(8*len(data)), &hash)
@@ -128,7 +128,7 @@ func Sum512(data []byte) [cDigestBytes]byte {
 // -----------------------------------------------------------------------------
 // # Hash Structure and Methods
 
-// Hash __
+// Hash _ _
 type Hash struct {
 	// global number of hashed bits (256-bit counter)
 	bitLength [cLengthBytes]byte
@@ -168,7 +168,7 @@ func New() Hash {
 	return ret
 } //                                                                         New
 
-// Write __
+// Write _ _
 func (ob *Hash) Write(data []byte) (n int, err error) {
 	if ob == nil {
 		return 0, zr.Error(zr.ENilReceiver)
