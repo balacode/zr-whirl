@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
+// ZR Library - Whirlpool Hash Package                      zr-whirl/[module.go]
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2018-05-24 04:12:11 DB0447                           zr-whirl/[module.go]
 // -----------------------------------------------------------------------------
 
 // Package whirl implements the Whirlpool hashing algorithm.

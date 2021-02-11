@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
+// ZR Library - Whirlpool Hash Package                        zr-whirl/[hash.go]
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2020-06-20 10:10:43 4BD42F                             zr-whirl/[hash.go]
 // -----------------------------------------------------------------------------
 
 package whirl

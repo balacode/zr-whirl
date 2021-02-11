@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
+// ZR Library - Whirlpool Hash Package                   zr-whirl/[constants.go]
 // (c) balarabe@protonmail.com                                      License: MIT
-// :v: 2019-05-19 20:34:27 DF1FAF                        zr-whirl/[constants.go]
 // -----------------------------------------------------------------------------
 
 package whirl
