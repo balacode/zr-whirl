@@ -6,4 +6,4 @@
 // Package whirl implements the Whirlpool hashing algorithm.
 package whirl
 
-//end
+// end

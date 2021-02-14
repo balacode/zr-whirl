@@ -1,9 +1,9 @@
-# ------------------------------------------------------------------------------
-# ZR Library - Whirlpool Hash Package                      zr-whirl/[.gitignore]
-# (c) balarabe@protonmail.com                                       License: MIT
-# ------------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
+## ZR Library - Whirlpool Hash Package                     zr-whirl/[.gitignore]
+## (c) balarabe@protonmail.com                                      License: MIT
+## -----------------------------------------------------------------------------
 
 *.bat
 *.sh
 
-# end
+## end

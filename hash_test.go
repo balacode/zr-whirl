@@ -355,4 +355,4 @@ func Test_hash_Whirlpool_(t *testing.T) {
 	// timing()
 } //                                                        Test_hash_Whirlpool_
 
-//end
+// end

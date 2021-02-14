@@ -23,6 +23,7 @@ package whirl
 //   processBuffer(ob *Hash)
 //
 // -----------------------------------------------------------------------------
+//
 // This Go language implementation was made by balarabe@protonmail.com
 // based on original public domain C source code. See details below.
 //
@@ -620,4 +621,4 @@ func processBuffer(ob *Hash) {
 	}
 } //                                                               processBuffer
 
-//end
+// end
