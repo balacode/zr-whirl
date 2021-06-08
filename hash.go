@@ -90,8 +90,6 @@ https://www.cosic.esat.kuleuven.ac.be/nessie/workshop/submissions/whirlpool.zip
 
 import (
 	"fmt"
-
-	"github.com/balacode/zr"
 )
 
 // -----------------------------------------------------------------------------
@@ -171,9 +169,6 @@ func New() Hash {
 
 // Write _ _
 func (ob *Hash) Write(data []byte) (n int, err error) {
-	if ob == nil {
-		return 0, zr.Error(zr.ENilReceiver)
-	}
 	appendBytes(data, uint64(8*len(data)), ob)
 	return len(data), nil
 } //                                                                       Write
@@ -286,10 +281,6 @@ func appendBytes(source []byte, sourceBits uint64, ob *Hash) {
 // finalize gets the hash value from the hashing state.
 // This method uses the invariant: bufferBits < cDigestBits
 func finalize(ob *Hash, result []byte) {
-	if ob == nil {
-		zr.Error(zr.ENilReceiver)
-		return
-	}
 	var (
 		buffer     = ob.buffer[:]
 		bufferBits = ob.bufferBits
@@ -340,10 +331,6 @@ func finalize(ob *Hash, result []byte) {
 
 // The core Whirlpool transform.
 func processBuffer(ob *Hash) {
-	if ob == nil {
-		zr.Error(zr.ENilReceiver)
-		return
-	}
 	var (
 		K      [8]uint64 // the round key
 		block  [8]uint64 // mu(buffer)

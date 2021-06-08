@@ -329,10 +329,6 @@ func format(ar []byte) (ret string) {
 
 // printStruct _ _
 func (ob *Hash) printStruct(title string) {
-	if ob == nil {
-		zr.Error(zr.ENilReceiver)
-		return
-	}
 	fmt.Printf("Hash: %s\n", title)
 	buf := ob.buffer[:]
 	for i, b := 0, 0; i < cWBlockBytes/8; i++ {
